@@ -1,3 +1,5 @@
+![tests](https://github.com/Mtillmann/chapters/actions/workflows/tests.yaml/badge.svg?event=push)
+
 # chapters
 
 Create, manage and convert chapters for 17 chapters formats:
