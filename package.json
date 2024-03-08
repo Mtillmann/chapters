@@ -1,0 +1,58 @@
+{
+  "name": "@mtillmann/chapters",
+  "version": "0.0.1",
+  "description": "library that manages and converts chapters of multiple formats",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "build": "rimraf dist && tsup",
+    "lint": "eslint src --ext .ts"
+  },
+  "homepage": "https://github.com/Mtillmann/chapters",
+  "author": "Martin Tillmann<mtillmann@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/Mtillmann/chapters/issues"
+  },
+  "keywords": [
+    "podcast",
+    "ffmpeg",
+    "chapters",
+    "youtube",
+    "mkvmerge",
+    "matroska",
+    "webvtt",
+    "pyscenedetect",
+    "vorbis",
+    "apple-chapters",
+    "podlove",
+    "podcast-chapters",
+    "edl",
+    "hls",
+    "scenecut"],
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@types/jest": "^29.5.12",
+    "@types/jsdom": "^21.1.6",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "filenamify": "^6.0.0",
+    "jsdom": "^24.0.0"
+  }
+}
