@@ -3,6 +3,7 @@ import { Float } from '../util'
 import { Base } from './Base'
 
 export class Scenecut extends Base {
+  supportsPrettyPrint = true
   filename = 'scene-cuts.json'
   mimeType = 'application/json'
 

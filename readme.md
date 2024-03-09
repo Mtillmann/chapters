@@ -22,7 +22,7 @@ Supported formats:
 | PodloveJson | Podlove Simple Chapters JSON | podlovejson    | `json` | [source](https://github.com/podlove/chapters#:~:text=org/%3E-,Encode%20to%20JSON,-iex%3E%20Chapters)                                                               |
 | MP4Chaps | MP4Chaps                     | mp4chaps       | `txt`  | [source](https://github.com/podlove/chapters#:~:text=%3Achapters%3E-,Encode%20to%20mp4chaps,-iex%3E%20Chapters)                                                    |
 | AppleHLS | Apple HLS Chapters           | applehls       | `json` | [spec](https://developer.apple.com/documentation/http-live-streaming/providing-javascript-object-notation-json-chapters), partial support                          |
-| Scenecut | Scenecut                     | scenecut       | `json` | [source](https://github.com/slhck/scenecut-extractor#:~:text=cuts%20in%20JSON-,format,-%3A)                                                                        |
+| Scenecut | Scenecut format              | scenecut       | `json` | [source](https://github.com/slhck/scenecut-extractor#:~:text=cuts%20in%20JSON-,format,-%3A)                                                                        |
 
 ## Installation
 
