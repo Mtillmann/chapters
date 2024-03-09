@@ -1,10 +1,14 @@
 ![tests](https://github.com/Mtillmann/chapters/actions/workflows/tests.yaml/badge.svg?event=push)
 
-[![npm version](https://badge.fury.io/js/@mtillmann%2Fchapters.png)](https://badge.fury.io/js/@mtillmann%2Fchapters)
+[![npm version](https://badge.fury.io/js/@mtillmann%2Fchapters.svg)](https://badge.fury.io/js/@mtillmann%2Fchapters)
 
 # chapters
 
-Supported formats:
+This is the core library of the [chaptertool](https://github.com/Mtillmann/chaptertool) project and provides the functionality to handle the formats below.  
+
+[Click here to open the web GUI](https://mtillmann.github.io/chaptertool) or go install chaptertool locally for CLI use.
+
+## Supported formats
 
 | class                               | description                  | key            | ext    | info                                                                                                                                                               |
 |-------------------------------------|------------------------------|----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
