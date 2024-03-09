@@ -1,5 +1,5 @@
 import filenamify from 'filenamify'
-import { enforceMilliseconds, hash, secondsToTimestamp, toSeconds } from '../util'
+import { enforceMilliseconds, hash, secondsToTimestamp, toSeconds, Float } from '../util'
 import { type MediaItemMeta } from '../Types/MediaItemMeta'
 import { type Chapter } from '../Types/Chapter'
 import { type MediaItem } from '../Types/MediaItem'
@@ -31,7 +31,7 @@ export abstract class Base implements MediaItem {
   isChapterFormat: boolean = true
 
   constructor (duration: number = 3600) {
-    this.duration = duration
+    this.duration = Float(duration)
   }
 
   static create (input?: string | MediaItem, duration?: number): MediaItem {
