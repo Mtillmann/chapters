@@ -1,5 +1,7 @@
 ![tests](https://github.com/Mtillmann/chapters/actions/workflows/tests.yaml/badge.svg?event=push)
 
+[![npm version](https://badge.fury.io/js/@mtillmann%2Fchapters.png)](https://badge.fury.io/js/@mtillmann%2Fchapters)
+
 # chapters
 
 Supported formats:
