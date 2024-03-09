@@ -30,9 +30,13 @@ export abstract class Base implements MediaItem {
 
   isChapterFormat: boolean = true
 
-  static create (input?: string | MediaItem): MediaItem {
+  constructor (duration: number = 3600) {
+    this.duration = duration
+  }
+
+  static create (input?: string | MediaItem, duration?: number): MediaItem {
     // @ts-expect-error: this will be the final class
-    return (new this()).from(input)
+    return (new this(duration)).from(input)
   }
 
   from (input?: string | MediaItem): MediaItem {
