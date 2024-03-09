@@ -69,6 +69,10 @@ const vtt2 = Autoformat.as(WebVTT, webVttString) // returns an instance of WebVT
 
 All formats support the following methods:
 
+### `constructor (duration: number = 3600)`
+
+Creates a new instance of the class, optionally with a duration in seconds.
+
 ### `static create (input?: string | MediaItem): MediaItem`
 
 Creates a new media item. This is the suggested way to create a media item:

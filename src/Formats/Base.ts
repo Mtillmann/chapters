@@ -58,9 +58,6 @@ export abstract class Base implements MediaItem {
         this.duration = chapter.startTime
       }
     }
-    if (this.duration === 0) {
-      this.duration = 3600
-    }
 
     this.bump()
     return this
