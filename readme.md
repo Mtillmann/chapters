@@ -79,9 +79,24 @@ All formats support the following methods:
 
 Creates a new instance of the class, optionally with a duration in seconds.
 
+```javascript
+const chapters = (new ChaptersJson(3600)).from(input)
+```
+
+> the constructor will not accept any input due to javascript's order of initialization which prevents the parse method
+> from having access to cerain locally defined properties and methods.
+
 ### `static create (input?: string | MediaItem): MediaItem`
 
-Creates a new media item. This is the suggested way to create a media item:
+Creates a new media item. This is the suggested way to create a media item from a string:
+
+```javascript
+const chapters = MatroskaXML.create(input)
+// chapters is now an instance of MatroskaXML
+
+const chapterString = WebVTT.create(chapters).toString()
+// chapterString is now a string representation of the chapters
+```
 
 ### `from (input?: string | MediaItem): MediaItem`
 
@@ -141,11 +156,11 @@ Returns the index of the chapter at the given time.
 
 ### `toString([pretty: boolean][, options: object]): string`
 
-Convert the chapters to a string.
+Convert the chapters to a string.  
 If `pretty` is `true`, the output will be formatted for better readability. Only supported by `json` and `xml` formats.
-`options` is an optional argument, containing format specific, optional options:
+Some formats support additional options:
 
-#### ChapterJson
+#### ChapterJson toString() options
 
 | option              | type      | default | description                                                                                                                                                      |
 |---------------------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -153,20 +168,20 @@ If `pretty` is `true`, the output will be formatted for better readability. Only
 | `writeRedundantToc` | `boolean` | `false` | Write [redundant](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md#:~:text=or%20not%20present%20at%20all) TOC attributes |
 | `writeEndTimes`     | `boolean` | `false` | Write end times                                                                                                                                                  |
 
-#### AppleChapters
+#### AppleChapters toString() options
 
 | option          | type      | default | description                                               |
 |-----------------|-----------|---------|-----------------------------------------------------------|
 | `acUseTextAttr` | `boolean` | `false` | When set, the text-attribute will be used instead of node  textContent     |
 
-#### PySceneDetect
+#### PySceneDetect toString() options
 
 | option             | type     | default  | description                              |
 |--------------------|----------|----------|------------------------------------------|
 | `psdFramerate`     | `number` | `23.976` | Framerate of the video file              |
 | `psdOmitTimecodes` | `boolen` | `false`  | When set, the first line will be omitted |
 
-#### Scenecut
+#### Scenecut toString() options
 
 | option | type     | default | description                 |
 |--------|----------|---------|-----------------------------|

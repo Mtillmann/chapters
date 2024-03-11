@@ -1,6 +1,6 @@
 {
   "name": "@mtillmann/chapters",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "library that manages and converts chapters of multiple formats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
