@@ -18,6 +18,10 @@ import { WebVTT } from './Formats/WebVTT'
 import { Youtube } from './Formats/Youtube'
 import * as Util from './util'
 
+import { MediaItem } from './Types/MediaItem'
+import { Chapter } from './Types/Chapter'
+import { MediaItemMeta } from './Types/MediaItemMeta'
+
 export {
   AutoFormat,
   AppleChapters,
@@ -38,4 +42,10 @@ export {
   WebVTT,
   Youtube,
   Util
+}
+
+export type {
+  MediaItem,
+  Chapter,
+  MediaItemMeta
 }

@@ -8,6 +8,7 @@ export class MKVMergeXML extends MatroskaXML {
   chapterStringNodeName = 'ChapterString'
 
   inputTimeToSeconds (string: string): number {
+    string = string.replace(/\.(\d{3}).*$/, '.$1')
     return timestampToSeconds(string)
   }
 
