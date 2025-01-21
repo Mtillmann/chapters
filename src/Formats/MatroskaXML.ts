@@ -1,6 +1,6 @@
 import { Float, Int, indenter } from '../util'
 import { Base } from './Base'
-import { JSDOM } from 'jsdom'
+import { XMLParser, XMLBuilder } from 'fast-xml-parser'
 
 export class MatroskaXML extends Base {
   supportsPrettyPrint = true
@@ -25,24 +25,30 @@ export class MatroskaXML extends Base {
       throw new Error('Input needs xml declaration and a <Chapters> node')
     }
 
-    let dom
     if (typeof DOMParser !== 'undefined') {
-      dom = (new DOMParser()).parseFromString(string, 'application/xml')
-      /* istanbul ignore next */
+      const dom = (new DOMParser()).parseFromString(string, 'application/xml')
+      this.chapters = [...dom.querySelectorAll('ChapterAtom')].map(chapter => {
+        return {
+          title: String(chapter.querySelector(this.chapterStringNodeName)?.textContent),
+          startTime: this.inputTimeToSeconds(String(chapter.querySelector('ChapterTimeStart')?.textContent)),
+          endTime: this.inputTimeToSeconds(String(chapter.querySelector('ChapterTimeEnd')?.textContent))
+        }
+      })
     } else {
-      /* istanbul ignore next */
-      dom = new JSDOM(string, { contentType: 'application/xml' })
-      /* istanbul ignore next */
-      dom = dom.window.document
-    }
+      const parsed = (new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '@_'
+      })).parse(string)
 
-    this.chapters = [...dom.querySelectorAll('ChapterAtom')].map(chapter => {
-      return {
-        title: String(chapter.querySelector(this.chapterStringNodeName)?.textContent),
-        startTime: this.inputTimeToSeconds(String(chapter.querySelector('ChapterTimeStart')?.textContent)),
-        endTime: this.inputTimeToSeconds(String(chapter.querySelector('ChapterTimeEnd')?.textContent))
-      }
-    })
+      this.chapters = parsed.Chapters.EditionEntry.ChapterAtom.map((chapter: any) => {
+        const title = chapter.ChapterDisplay[this.chapterStringNodeName]
+        return {
+          title,
+          startTime: this.inputTimeToSeconds(String(chapter.ChapterTimeStart)),
+          endTime: this.inputTimeToSeconds(String(chapter.ChapterTimeEnd))
+        }
+      })
+    }
   }
 
   toString (pretty: boolean = false): string {

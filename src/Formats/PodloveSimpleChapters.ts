@@ -1,7 +1,7 @@
 import { Base } from './Base'
-import { JSDOM } from 'jsdom'
 import { NPTToSeconds, indenter, secondsToNPT } from '../util'
 import { type Chapter } from '../Types/Chapter'
+import { XMLParser } from 'fast-xml-parser'
 
 export class PodloveSimpleChapters extends Base {
   supportsPrettyPrint = true
@@ -17,59 +17,79 @@ export class PodloveSimpleChapters extends Base {
       throw new Error('Input must contain <psc:chapters ...> node')
     }
 
-    let dom
     if (typeof DOMParser !== 'undefined') {
-      dom = (new DOMParser()).parseFromString(string, 'application/xml')
-      /* istanbul ignore next */
+      const dom = (new DOMParser()).parseFromString(string, 'application/xml')
+      this.chapters = [...dom.querySelectorAll('[start]')].reduce((acc: Chapter[], node) => {
+        if (node.tagName === 'psc:chapter') {
+          const start = node.getAttribute('start')
+          const title = node.getAttribute('title')
+          const image = node.getAttribute('image')
+          const href = node.getAttribute('href')
+
+          const chapter: Chapter = {
+            startTime: NPTToSeconds(start!)
+          }
+
+          if (title) {
+            chapter.title = title
+          }
+          if (image) {
+            chapter.img = image
+          }
+          if (href) {
+            chapter.url = href
+          }
+
+          acc.push(chapter)
+        }
+        return acc
+      }, [])
     } else {
-      /* istanbul ignore next */
-      dom = new JSDOM(string, { contentType: 'application/xml' })
-      /* istanbul ignore next */
-      dom = dom.window.document
+      const parsed = (new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '@_'
+      })).parse(string)
+
+      this.chapters = parsed.rss.channel.item['psc:chapters']['psc:chapter'].map((chapter: any) => {
+        const item: Chapter = {
+          startTime: NPTToSeconds(chapter['@_start'] as string)
+        }
+
+        if (chapter['@_title']) {
+          item.title = chapter['@_title']
+        }
+
+        if (chapter['@_image']) {
+          item.img = chapter['@_image']
+        }
+
+        if (chapter['@_href']) {
+          item.url = chapter['@_href']
+        }
+
+        return item
+      })
     }
-
-    this.chapters = [...dom.querySelectorAll('[start]')].reduce((acc: Chapter[], node) => {
-      if (node.tagName === 'psc:chapter') {
-        const start = node.getAttribute('start')
-        const title = node.getAttribute('title')
-        const image = node.getAttribute('image')
-        const href = node.getAttribute('href')
-
-        const chapter: Chapter = {
-          startTime: NPTToSeconds(start!)
-        }
-
-        if (title) {
-          chapter.title = title
-        }
-        if (image) {
-          chapter.img = image
-        }
-        if (href) {
-          chapter.url = href
-        }
-
-        acc.push(chapter)
-      }
-      return acc
-    }, [])
   }
 
   toString (pretty = false): string {
     const indent = indenter(pretty ? 2 : 0)
 
     const output = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
       '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
       indent(1, '<channel>'),
       indent(2, '<!-- this is only a fragment of an rss feed, see -->'),
       indent(2, '<!-- https://podlove.org/simple-chapters/#:~:text=37%20seconds-,Embedding%20Example,-This%20is%20an -->'),
       indent(2, '<!-- for more information -->'),
-      indent(2, '<psc:chapters version="1.2" xmlns:psc="http://podlove.org/simple-chapters">')
+      indent(2, '<atom:link type="text/html" href="http://podlove.org/" />'),
+      indent(2, '<item>'),
+      indent(3, '<psc:chapters version="1.2" xmlns:psc="http://podlove.org/simple-chapters">')
     ]
 
     this.chapters.forEach(chapter => {
       const node = [
-                `<psc:chapter start="${secondsToNPT(chapter.startTime)}"`
+        `<psc:chapter start="${secondsToNPT(chapter.startTime)}"`
       ]
 
       if (chapter.title) {
@@ -83,11 +103,12 @@ export class PodloveSimpleChapters extends Base {
       }
       node.push('/>')
 
-      output.push(indent(3, node.join('')))
+      output.push(indent(4, node.join('')))
     })
 
     output.push(
-      indent(2, '</psc:chapters>'),
+      indent(3, '</psc:chapters>'),
+      indent(2, '</item>'),
       indent(1, '</channel>'),
       indent(0, '</rss>')
     )

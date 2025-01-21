@@ -1,6 +1,6 @@
-import { JSDOM } from 'jsdom'
 import { indenter, secondsToTimestamp, timestampToSeconds } from '../util'
 import { MatroskaXML } from './MatroskaXML'
+import { XMLParser } from 'fast-xml-parser'
 
 export class AppleChapters extends MatroskaXML {
   supportsPrettyPrint = true
@@ -16,26 +16,29 @@ export class AppleChapters extends MatroskaXML {
       throw new Error('Input needs xml declaration and a <TextStream...> node')
     }
 
-    let dom
-    /* istanbul ignore next */
     if (typeof DOMParser !== 'undefined') {
-      /* istanbul ignore next */
-      dom = (new DOMParser()).parseFromString(string, 'application/xml')
-      /* istanbul ignore next */
+      const dom = (new DOMParser()).parseFromString(string, 'application/xml')
+      this.chapters = [...dom.querySelectorAll('TextSample')].map(chapter => {
+        const title = String(chapter.getAttribute('text') ?? chapter.textContent)
+        return {
+          title,
+          startTime: timestampToSeconds(String(chapter.getAttribute('sampleTime')))
+        }
+      })
     } else {
-      /* istanbul ignore next */
-      dom = new JSDOM(string, { contentType: 'application/xml' })
-      /* istanbul ignore next */
-      dom = dom.window.document
-    }
+      const parsed = (new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: '@_'
+      })).parse(string)
 
-    this.chapters = [...dom.querySelectorAll('TextSample')].map(chapter => {
-      const title = String(chapter.getAttribute('text') ?? chapter.textContent)
-      return {
-        title,
-        startTime: timestampToSeconds(String(chapter.getAttribute('sampleTime')))
-      }
-    })
+      this.chapters = parsed.TextStream.TextSample.map((chapter: any) => {
+        const title = chapter['#text'] || chapter['@_text']
+        return {
+          title,
+          startTime: timestampToSeconds(chapter['@_sampleTime'] as string)
+        }
+      })
+    }
   }
 
   toString (pretty: boolean = false, exportOptions: any = {}): string {
