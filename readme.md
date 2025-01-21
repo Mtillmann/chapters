@@ -10,25 +10,26 @@ This is the core library of the [chaptertool](https://github.com/Mtillmann/chapt
 
 ## Supported formats
 
-| class                               | description                  | key            | ext    | info                                                                                                                                                               |
-|-------------------------------------|------------------------------|----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ChaptersJson | Podcasting 2.0 Chapters      | chaptersjson   | `json` | [spec](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md)                                                                   |
-| FFMetadata | FFMetadata                   | ffmpegdata     | `txt`  | [spec](https://ffmpeg.org/ffmpeg-formats.html#Metadata-1)                                                                                                          |
-| MatroskaXML | Matroska XML chapters        | matroskaxml    | `xml`  | [spec](https://www.matroska.org/technical/chapters.html)                                                                                                           |
-| MKVMergeXML | MKVToolNix mkvmerge XML      | mkvmergexml    | `xml`  | [spec](https://mkvtoolnix.download/doc/mkvmerge.html#mkvmerge.chapters)                                                                                            |
-| MKVMergeSimple | MKVToolNix mkvmerge _simple_ | mkvmergesimple | `txt`  | [spec](https://mkvtoolnix.download/doc/mkvmerge.html#mkvmerge.chapters)                                                                                            |
-| WebVTT | WebVTT Chapters              | webvtt         | `vtt`  | [spec](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)                                                                                                |
-| Youtube | Youtube Chapter Syntax       | youtube        | `txt`  |                                                                                                                                                                    |
-| FFMpegInfo | FFMpegInfo                   | ffmpeginfo     | `txt`  | read only, used internally                                                                                                                                         |
-| PySceneDetect | PySceneDetect                | pyscenedetect  | `csv`  | [project home](https://github.com/Breakthrough/PySceneDetect)                                                                                                      |
-| VorbisComment | Vorbis Comment Format        | vorbiscomment  | `txt`  | [spec](https://wiki.xiph.org/Chapter_Extension)                                                                                                                    |
-| AppleChapters | "Apple Chapters"             | applechapters  | `xml`  | [source](https://github.com/rigaya/NVEnc/blob/master/NVEncC_Options.en.md#--chapter-string:~:text=CHAPTER03NAME%3Dchapter%2D3-,apple%20format,-(should%20be%20in)) |
-| ShutterEDL | Shutter EDL                  | edl            | `edl`  | [source](https://github.com/paulpacifico/shutter-encoder/blob/f3d6bb6dfcd629861a0b0a50113bf4b062e1ba17/src/application/SceneDetection.java)                        |
+| class                 | description                  | key            | ext    | info                                                                                                                                                               |
+| --------------------- | ---------------------------- | -------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ChaptersJson          | Podcasting 2.0 Chapters      | chaptersjson   | `json` | [spec](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md)                                                                   |
+| FFMetadata            | FFMetadata                   | ffmpegdata     | `txt`  | [spec](https://ffmpeg.org/ffmpeg-formats.html#Metadata-1)                                                                                                          |
+| MatroskaXML           | Matroska XML chapters        | matroskaxml    | `xml`  | [spec](https://www.matroska.org/technical/chapters.html)                                                                                                           |
+| MKVMergeXML           | MKVToolNix mkvmerge XML      | mkvmergexml    | `xml`  | [spec](https://mkvtoolnix.download/doc/mkvmerge.html#mkvmerge.chapters)                                                                                            |
+| MKVMergeSimple        | MKVToolNix mkvmerge _simple_ | mkvmergesimple | `txt`  | [spec](https://mkvtoolnix.download/doc/mkvmerge.html#mkvmerge.chapters)                                                                                            |
+| WebVTT                | WebVTT Chapters              | webvtt         | `vtt`  | [spec](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)                                                                                                |
+| Youtube               | Youtube Chapter Syntax       | youtube        | `txt`  |                                                                                                                                                                    |
+| FFMpegInfo            | FFMpegInfo                   | ffmpeginfo     | `txt`  | read only, used internally                                                                                                                                         |
+| PySceneDetect         | PySceneDetect                | pyscenedetect  | `csv`  | [project home](https://github.com/Breakthrough/PySceneDetect)                                                                                                      |
+| VorbisComment         | Vorbis Comment Format        | vorbiscomment  | `txt`  | [spec](https://wiki.xiph.org/Chapter_Extension)                                                                                                                    |
+| AppleChapters         | "Apple Chapters"             | applechapters  | `xml`  | [source](https://github.com/rigaya/NVEnc/blob/master/NVEncC_Options.en.md#--chapter-string:~:text=CHAPTER03NAME%3Dchapter%2D3-,apple%20format,-(should%20be%20in)) |
+| ShutterEDL            | Shutter EDL                  | edl            | `edl`  | [source](https://github.com/paulpacifico/shutter-encoder/blob/f3d6bb6dfcd629861a0b0a50113bf4b062e1ba17/src/application/SceneDetection.java)                        |
 | PodloveSimpleChapters | Podlove Simple Chapters      | psc            | `xml`  | [spec](https://podlove.org/simple-chapters/)                                                                                                                       |
-| PodloveJson | Podlove Simple Chapters JSON | podlovejson    | `json` | [source](https://github.com/podlove/chapters#:~:text=org/%3E-,Encode%20to%20JSON,-iex%3E%20Chapters)                                                               |
-| MP4Chaps | MP4Chaps                     | mp4chaps       | `txt`  | [source](https://github.com/podlove/chapters#:~:text=%3Achapters%3E-,Encode%20to%20mp4chaps,-iex%3E%20Chapters)                                                    |
-| AppleHLS | Apple HLS Chapters           | applehls       | `json` | [spec](https://developer.apple.com/documentation/http-live-streaming/providing-javascript-object-notation-json-chapters), partial support                          |
-| Scenecut | Scenecut format              | scenecut       | `json` | [source](https://github.com/slhck/scenecut-extractor#:~:text=cuts%20in%20JSON-,format,-%3A)                                                                        |
+| PodloveJson           | Podlove Simple Chapters JSON | podlovejson    | `json` | [source](https://github.com/podlove/chapters#:~:text=org/%3E-,Encode%20to%20JSON,-iex%3E%20Chapters)                                                               |
+| MP4Chaps              | MP4Chaps                     | mp4chaps       | `txt`  | [source](https://github.com/podlove/chapters#:~:text=%3Achapters%3E-,Encode%20to%20mp4chaps,-iex%3E%20Chapters)                                                    |
+| AppleHLS              | Apple HLS Chapters           | applehls       | `json` | [spec](https://developer.apple.com/documentation/http-live-streaming/providing-javascript-object-notation-json-chapters), partial support                          |
+| Scenecut              | Scenecut format              | scenecut       | `json` | [source](https://github.com/slhck/scenecut-extractor#:~:text=cuts%20in%20JSON-,format,-%3A)                                                                        |
+| Audible               | Audible Chapter Format         | audible        | `json` | [source](./audible-chapter-spec.md)                                                                                                                               |
 
 ## Installation
 
@@ -163,28 +164,28 @@ Some formats support additional options:
 #### ChapterJson toString() options
 
 | option              | type      | default | description                                                                                                                                                      |
-|---------------------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `imagePrefix`       | `string`  | `''`    | Prefix for image URLs                                                                                                                                            |
 | `writeRedundantToc` | `boolean` | `false` | Write [redundant](https://github.com/Podcastindex-org/podcast-namespace/blob/main/chapters/jsonChapters.md#:~:text=or%20not%20present%20at%20all) TOC attributes |
 | `writeEndTimes`     | `boolean` | `false` | Write end times                                                                                                                                                  |
 
 #### AppleChapters toString() options
 
-| option          | type      | default | description                                               |
-|-----------------|-----------|---------|-----------------------------------------------------------|
-| `acUseTextAttr` | `boolean` | `false` | When set, the text-attribute will be used instead of node  textContent     |
+| option          | type      | default | description                                                            |
+| --------------- | --------- | ------- | ---------------------------------------------------------------------- |
+| `acUseTextAttr` | `boolean` | `false` | When set, the text-attribute will be used instead of node  textContent |
 
 #### PySceneDetect toString() options
 
 | option             | type     | default  | description                              |
-|--------------------|----------|----------|------------------------------------------|
+| ------------------ | -------- | -------- | ---------------------------------------- |
 | `psdFramerate`     | `number` | `23.976` | Framerate of the video file              |
 | `psdOmitTimecodes` | `boolen` | `false`  | When set, the first line will be omitted |
 
 #### Scenecut toString() options
 
-| option | type     | default | description                 |
-|--------|----------|---------|-----------------------------|
+| option      | type     | default | description                 |
+| ----------- | -------- | ------- | --------------------------- |
 | `frameRate` | `number` | `30`    | Framerate of the video file |
 | `ptsScale`  | `number` | `1`     | PTS scale (See below)       |
 | `score`     | `number` | `0.5`   | Score threshold             |

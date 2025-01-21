@@ -18,12 +18,14 @@ import { VorbisComment } from "../src/Formats/VorbisComment";
 import { PodloveJson } from "../src/Formats/PodloveJson";
 import { Scenecut } from "../src/Formats/Scenecut";
 import { AppleHLS } from "../src/Formats/AppleHLS";
+import { Audible } from "../src/Formats/Audible";
 
 describe('autodetection of sample files', () => {
 
     const filesAndKeysAndHandlers = [
         ['applechapters.xml', 'applechapters', AppleChapters],
         ['applehls.json', 'applehls', AppleHLS],
+        ['audible.json', 'audible', Audible],
         ['chapters.json', 'chaptersjson', ChaptersJson],
         ['FFMetadata.txt', 'ffmetadata', FFMetadata],
         ['ffmpeginfo.txt', 'ffmpeginfo', FFMpegInfo],
@@ -38,8 +40,7 @@ describe('autodetection of sample files', () => {
         ['shutter.edl', 'shutteredl', ShutterEDL],
         ['vorbiscomment.txt', 'vorbiscomment', VorbisComment],
         ['webvtt.txt', 'webvtt', WebVTT],
-        ['youtube-chapters.txt', 'youtube', Youtube],
-        
+        ['youtube-chapters.txt', 'youtube', Youtube],        
     ];
 
     

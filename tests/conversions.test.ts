@@ -14,16 +14,16 @@ import { MP4Chaps } from "../src/Formats/MP4Chaps";
 import { PodloveJson } from "../src/Formats/PodloveJson";
 import { AppleHLS } from "../src/Formats/AppleHLS";
 import { Scenecut } from "../src/Formats/Scenecut";
+import { Audible } from "../src/Formats/Audible";
 import { readFileSync } from "fs";
 import { sep } from "path";
 
 describe('conversions from one format to any other', () => {
     const formats = [
-        ChaptersJson, WebVTT, Youtube, FFMetadata, 
-        MatroskaXML, MKVMergeXML, MKVMergeSimple, 
-        PySceneDetect, AppleChapters, ShutterEDL, 
-        VorbisComment, PodloveSimpleChapters, MP4Chaps,
-        PodloveJson, AppleHLS, Scenecut
+        AppleChapters, AppleHLS, Audible, ChaptersJson, 
+        FFMetadata, MatroskaXML, MKVMergeSimple, MKVMergeXML, 
+        MP4Chaps, PodloveJson, PodloveSimpleChapters, PySceneDetect, 
+        Scenecut, ShutterEDL, VorbisComment, WebVTT, Youtube
     ];
 
     const content = readFileSync(module.path + sep + 'samples' + sep + 'chapters.json', 'utf-8');

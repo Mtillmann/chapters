@@ -1,0 +1,127 @@
+{
+  "content_license": {
+    "acr": "<redacted>",
+    "asin": "<redacted>",
+    "certificate": "<redacted>",
+    "content_metadata": {
+      "chapter_info": {
+        "brandIntroDurationMs": 2043,
+        "brandOutroDurationMs": 5061,
+        "chapters": [
+          {
+            "length_ms": 15154,
+            "start_offset_ms": 0,
+            "start_offset_sec": 0,
+            "title": "Opening Credits"
+          },
+          {
+            "length_ms": 3450888,
+            "start_offset_ms": 15154,
+            "start_offset_sec": 15,
+            "title": "Introduction"
+          },
+          {
+            "length_ms": 7019855,
+            "start_offset_ms": 3466042,
+            "start_offset_sec": 3466,
+            "title": "Chapter 1."
+          },
+          {
+            "length_ms": 10525325,
+            "start_offset_ms": 10485897,
+            "start_offset_sec": 10486,
+            "title": "Chapter 2."
+          },
+          {
+            "length_ms": 8016827,
+            "start_offset_ms": 21011222,
+            "start_offset_sec": 21011,
+            "title": "Chapter 3."
+          },
+          {
+            "length_ms": 6340115,
+            "start_offset_ms": 29028049,
+            "start_offset_sec": 29028,
+            "title": "Chapter 4."
+          },
+          {
+            "length_ms": 8660485,
+            "start_offset_ms": 35368164,
+            "start_offset_sec": 35368,
+            "title": "Chapter 5."
+          },
+          {
+            "length_ms": 6277049,
+            "start_offset_ms": 44028649,
+            "start_offset_sec": 44029,
+            "title": "Chapter 6."
+          },
+          {
+            "length_ms": 1765645,
+            "start_offset_ms": 50305698,
+            "start_offset_sec": 50306,
+            "title": "Conclusion"
+          },
+          {
+            "length_ms": 379599,
+            "start_offset_ms": 52071343,
+            "start_offset_sec": 52071,
+            "title": "Acknowledgments"
+          },
+          {
+            "length_ms": 23033,
+            "start_offset_ms": 52450942,
+            "start_offset_sec": 52451,
+            "title": "End Credits"
+          }
+        ],
+        "is_accurate": true,
+        "runtime_length_ms": 52473975,
+        "runtime_length_sec": 52474
+      },
+      "content_reference": {
+        "acr": "<redacted>",
+        "asin": "<redacted>",
+        "codec": "mp4a.40.2",
+        "content_format": "M4A_AAX",
+        "content_size_in_bytes": 234540516,
+        "file_version": "1",
+        "marketplace": "<redacted>",
+        "sku": "<redacted>",
+        "tempo": "1.0",
+        "version": "67171021"
+      },
+      "last_position_heard": {
+        "last_updated": "2025-01-21 16:13:05.523",
+        "position_ms": 47330663,
+        "status": "Exists"
+      }
+    },
+    "drm_type": "Widevine",
+    "granted_right": "Ownership",
+    "license_id": "<redacted>",
+    "license_response": "<redacted>",
+    "license_response_type": "FullTitle",
+    "message": "Ownership: User [<redacted>] has [Purchase] rights.",
+    "playback_info": {
+      "end_offset_ms": 52473975,
+      "last_position_heard": {
+        "last_updated": "2025-01-21T16:13:05Z",
+        "position_ms": 47330663,
+        "status": "Exists"
+      },
+      "start_offset_ms": 0
+    },
+    "preview": false,
+    "request_id": "<redacted>",
+    "requires_ad_supported_playback": false,
+    "status_code": "Granted"
+  },
+  "response_groups": [
+    "always-returned",
+    "last_position_heard",
+    "certificate",
+    "chapter_info",
+    "content_reference"
+  ]
+}
