@@ -3,7 +3,7 @@
 This document describes the structure of an Audible chapter format that is used
 by audible's web player and presumably their mobile apps.
 
-The format is part of an endpoint that audible class `licenserequest` which contains other information about the book and the current user's license, which is is out of the scope of this document.
+The format is part of an endpoint that audible calls `licenserequest` which contains other information about the book and the current user's license, which is is out of the scope of this document.
 
 ```json
 {
