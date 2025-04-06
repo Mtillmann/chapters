@@ -15,6 +15,7 @@ import { PodloveJson } from "../src/Formats/PodloveJson";
 import { AppleHLS } from "../src/Formats/AppleHLS";
 import { Scenecut } from "../src/Formats/Scenecut";
 import { Audible } from "../src/Formats/Audible";
+import { Podigee } from "../src/Formats/Podigee";
 import { readFileSync } from "fs";
 import { sep } from "path";
 
@@ -22,7 +23,7 @@ describe('conversions from one format to any other', () => {
     const formats = [
         AppleChapters, AppleHLS, Audible, ChaptersJson, 
         FFMetadata, MatroskaXML, MKVMergeSimple, MKVMergeXML, 
-        MP4Chaps, PodloveJson, PodloveSimpleChapters, PySceneDetect, 
+        MP4Chaps, Podigee, PodloveJson, PodloveSimpleChapters, PySceneDetect, 
         Scenecut, ShutterEDL, VorbisComment, WebVTT, Youtube
     ];
 

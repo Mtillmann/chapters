@@ -16,6 +16,7 @@ import { PodloveJson } from './PodloveJson'
 import { AppleHLS } from './AppleHLS'
 import { Scenecut } from './Scenecut'
 import { Audible } from './Audible'
+import { Podigee } from './Podigee'
 import { type MediaItem } from '../Types/MediaItem'
 
 const classMap: Record<string, any> = {
@@ -36,7 +37,8 @@ const classMap: Record<string, any> = {
   podlovejson: PodloveJson,
   applehls: AppleHLS,
   scenecut: Scenecut,
-  audible: Audible
+  audible: Audible,
+  podigee: Podigee
 }
 
 export const AutoFormat = {
