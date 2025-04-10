@@ -3,6 +3,7 @@ import { secondsToTimestamp, timestampToSeconds } from '../util'
 import { Base } from './Base'
 
 export class Podigee extends Base {
+  filename = 'podigee-chapters.json'
   supportsPrettyPrint = true
 
   test (data: object[]): { errors: string[] } {
