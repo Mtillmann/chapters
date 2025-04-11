@@ -6,7 +6,7 @@
 
 This is the core library of [chaptertool](https://github.com/Mtillmann/chaptertool) and [chapconv](https://github.com/Mtillmann/chapconv/) and provides the functionality to handle the formats below.  
 
-[Click here to open the web GUI](https://mtillmann.github.io/chaptertool) or go install chaptertool locally for CLI use.
+[Click here to open the chaptertool web GUI](https://mtillmann.github.io/chaptertool).
 
 ## Supported formats
 
