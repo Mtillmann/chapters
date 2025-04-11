@@ -28,11 +28,11 @@ export class TextGeneric extends Base {
       hours: 'default'
     },
     podigeetext: {
-      string: (title: string, start: string) => `${start} ${title}`,
+      string: (title: string, start: string) => `${start} - ${title}`,
       hours: 'always'
     },
     podcastpage: {
-      string: (title: string, start: string) => `${start}-${title}`,
+      string: (title: string, start: string) => `(${start}) - ${title}`,
       hours: 'default'
     }
   }

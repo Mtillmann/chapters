@@ -18,6 +18,12 @@ import { Scenecut } from './Scenecut'
 import { Audible } from './Audible'
 import { Podigee } from './Podigee'
 import { type MediaItem } from '../Types/MediaItem'
+import { PodigeeText } from './PodigeeText'
+import { ShowNotes } from './ShowNotes'
+import { SpotifyA } from './SpotifyA'
+import { SpotifyB } from './SpotifyB'
+import { PodcastPage } from './PodcastPage'
+import { TransistorFM } from './TransistorFM'
 
 const classMap: Record<string, any> = {
   chaptersjson: ChaptersJson,
@@ -38,7 +44,13 @@ const classMap: Record<string, any> = {
   applehls: AppleHLS,
   scenecut: Scenecut,
   audible: Audible,
-  podigee: Podigee
+  podigee: Podigee,
+  podigeetext: PodigeeText,
+  shownotes: ShowNotes,
+  spotifya: SpotifyA,
+  spotifyb: SpotifyB,
+  podcastpage: PodcastPage,
+  transistorfm: TransistorFM
 }
 
 export const AutoFormat = {

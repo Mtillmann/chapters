@@ -42,7 +42,7 @@ describe('PodcastPage Format Handler', () => {
     });
 
     it('exports to correct format',() => {
-        expect(instance.toString().slice(0,5)).toEqual('00:00');
+        expect(instance.toString().slice(0,7)).toEqual('(00:00)');
     });
 
     console.log(instance.toString());

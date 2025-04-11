@@ -86,6 +86,8 @@ Apart from it's chapter format, Podigee also supports a [text format](https://he
 01:01:30 - Chapter 5
 ```
 
+extremely similar to the transistor.fm format, but apparenlty it requires hours to be specified as well.
+
 ## podcastpage format
 
 The podcastpage format is a [text format](https://docs.podcastpage.io/article/33-timestamps) that looks like this:
