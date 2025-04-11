@@ -45,8 +45,6 @@ describe('PodcastPage Format Handler', () => {
         expect(instance.toString().slice(0,7)).toEqual('(00:00)');
     });
 
-    console.log(instance.toString());
-
     it('export includes correct timestamp',() => {
         expect(instance.toString()).toContain('01:01:30');
     });

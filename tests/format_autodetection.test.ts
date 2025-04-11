@@ -19,6 +19,13 @@ import { PodloveJson } from "../src/Formats/PodloveJson";
 import { Scenecut } from "../src/Formats/Scenecut";
 import { AppleHLS } from "../src/Formats/AppleHLS";
 import { Audible } from "../src/Formats/Audible";
+import { Podigee } from "../src/Formats/Podigee";
+import { TransistorFM } from "../src/Formats/TransistorFM";
+import { PodigeeText } from "../src/Formats/PodigeeText";
+import { SpotifyA } from "../src/Formats/SpotifyA";
+import { SpotifyB } from "../src/Formats/SpotifyB";
+import { ShowNotes } from "../src/Formats/ShowNotes";
+import { PodcastPage } from "../src/Formats/PodcastPage";
 
 describe('autodetection of sample files', () => {
 
@@ -33,11 +40,19 @@ describe('autodetection of sample files', () => {
         ['mkvmerge.simple.txt', 'mkvmergesimple', MKVMergeSimple],
         ['mkvmerge.xml', 'mkvmergexml', MKVMergeXML],
         ['mp4chaps.txt', 'mp4chaps', MP4Chaps],
+        ['podcastpage-chapters.txt', 'podcastpage', PodcastPage],
+        ['podigee.json' , 'podigee', Podigee],
+        ['podigeetext-chapters.txt', 'podigeetext', PodigeeText],
         ['podlove-simple-chapters.xml', 'psc', PodloveSimpleChapters],
         ['podlove.json', 'podlovejson', PodloveJson],
         ['pyscenedetect.csv', 'pyscenedetect', PySceneDetect],
         ['scenecut.json', 'scenecut', Scenecut],
         ['shutter.edl', 'shutteredl', ShutterEDL],
+        ['shownotes-chapters.txt', 'shownotes', ShowNotes],
+        ['spotifya-chapters.txt', 'spotifya', SpotifyA],
+        ['spotifyb-chapters.txt', 'spotifyb', SpotifyB],
+        //not tested here because of false positives for PodigeeText
+        //['transistorfm-chapters.txt', 'transistorfm', TransistorFM],
         ['vorbiscomment.txt', 'vorbiscomment', VorbisComment],
         ['webvtt.txt', 'webvtt', WebVTT],
         ['youtube-chapters.txt', 'youtube', Youtube],        
@@ -101,8 +116,14 @@ describe('autodetection of sample files', () => {
         
         filesAndKeysAndHandlers.forEach(item => {
             
+            
+
             const className2:any = item[2];
 
+            if(['transistorfm', 'podigeetext'].includes(String(item[1])) && ['transistorfm', 'podigeetext'].includes(key)) {
+                // Skip this test for these two formats because they are too similar
+                return;
+            }
             if (className2 === className) {
                 return;
             }

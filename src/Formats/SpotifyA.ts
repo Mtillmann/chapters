@@ -5,7 +5,7 @@ export class SpotifyA extends TextGeneric {
   mimeType = 'text/plain'
 
   detect (inputString: string): boolean {
-    return /^\(?(?<ts>\d?\d:\d\d(?::\d\d)?)\)? (?<title>[^\n]+)/.test(inputString.trim())
+    return /^\((?<ts>\d?\d:\d\d(?::\d\d)?)\) [^-](?<title>[^\n]+)/.test(inputString.trim())
   }
 
   toString (): string {

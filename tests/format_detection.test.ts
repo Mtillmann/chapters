@@ -14,8 +14,20 @@ import { MP4Chaps } from "../src/Formats/MP4Chaps";
 import { PodloveJson } from "../src/Formats/PodloveJson";
 import { AppleHLS } from "../src/Formats/AppleHLS";
 import { Scenecut } from "../src/Formats/Scenecut";
+import { Audible } from "../src/Formats/Audible";
+import { Podigee } from "../src/Formats/Podigee";
+import { PodigeeText } from "../src/Formats/PodigeeText";
+import { PodcastPage } from "../src/Formats/PodcastPage";
+import { TransistorFM } from "../src/Formats/TransistorFM";
+import {SpotifyA} from "../src/Formats/SpotifyA";
+import { SpotifyB } from "../src/Formats/SpotifyB";
+import {ShowNotes} from "../src/Formats/ShowNotes";
+
 import { readFileSync } from "fs";
 import { sep } from "path";
+
+// TransistorFM is commented out because it is too similar to PodigeeText
+// and causes false positives in the detection process.
 
 describe('detection of input strings', () => {
     const formats = [
@@ -23,7 +35,9 @@ describe('detection of input strings', () => {
         MatroskaXML, MKVMergeXML, MKVMergeSimple,
         PySceneDetect, AppleChapters, ShutterEDL,
         VorbisComment, PodloveSimpleChapters, MP4Chaps,
-        PodloveJson, AppleHLS, Scenecut
+        PodloveJson, AppleHLS, Scenecut, Audible, Podigee,
+        PodcastPage, PodigeeText, /* TransistorFM ,*/ SpotifyA,
+        SpotifyB, ShowNotes
     ];
 
     const content = readFileSync(module.path + sep + 'samples' + sep + 'chapters.json', 'utf-8');

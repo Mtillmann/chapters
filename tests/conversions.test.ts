@@ -18,13 +18,19 @@ import { Audible } from "../src/Formats/Audible";
 import { Podigee } from "../src/Formats/Podigee";
 import { readFileSync } from "fs";
 import { sep } from "path";
+import { PodigeeText } from "../src/Formats/PodigeeText";
+import { TransistorFM } from "../src/Formats/TransistorFM";
+import { PodcastPage } from "../src/Formats/PodcastPage";
+import { SpotifyA } from "../src/Formats/SpotifyA";
+import { SpotifyB } from "../src/Formats/SpotifyB";
+import { ShowNotes } from "../src/Formats/ShowNotes";
 
 describe('conversions from one format to any other', () => {
     const formats = [
         AppleChapters, AppleHLS, Audible, ChaptersJson, 
         FFMetadata, MatroskaXML, MKVMergeSimple, MKVMergeXML, 
-        MP4Chaps, Podigee, PodloveJson, PodloveSimpleChapters, PySceneDetect, 
-        Scenecut, ShutterEDL, VorbisComment, WebVTT, Youtube
+        MP4Chaps, PodcastPage, Podigee, PodigeeText, PodloveJson, PodloveSimpleChapters, PySceneDetect, 
+        Scenecut, ShutterEDL, SpotifyA, SpotifyB, TransistorFM, ShowNotes, VorbisComment, WebVTT, Youtube
     ];
 
     const content = readFileSync(module.path + sep + 'samples' + sep + 'chapters.json', 'utf-8');
