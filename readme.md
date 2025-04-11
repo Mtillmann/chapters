@@ -91,7 +91,7 @@ const chapters = (new ChaptersJson(3600)).from(input)
 ```
 
 > the constructor will not accept any input due to javascript's order of initialization which prevents the parse method
-> from having access to cerain locally defined properties and methods.
+> from having access to certain locally defined properties and methods.
 
 ### `static create (input?: string | MediaItem): MediaItem`
 
@@ -102,7 +102,7 @@ const chapters = MatroskaXML.create(input)
 // chapters is now an instance of MatroskaXML
 
 const chapterString = WebVTT.create(chapters).toString()
-// chapterString is now a string representation of the chapters
+// chapterString is now a WebVTT string representation of the chapters
 ```
 
 ### `from (input?: string | MediaItem): MediaItem`
@@ -117,11 +117,11 @@ Converts the media item to another format.
 
 Adds a chapter.
 
-### `addChapterAt (index: number, chapter: object = {}): number`
+### `addChapterAt (index: number, chapter: Partial<Chapter> = {}): number`
 
 Adds a chapter at the given index.
 
-### `addChapterAtTime (time: number | string, chapter: object = {}): boolean`
+### `addChapterAtTime (time: number | string, chapter: Partial<Chapter> = {}): boolean`
 
 Adds a chapter at the given time.
 

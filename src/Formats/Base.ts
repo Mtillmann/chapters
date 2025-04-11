@@ -76,7 +76,7 @@ export abstract class Base implements MediaItem {
     return true
   }
 
-  test (data: object): { errors: string[] } {
+  test (data: Record<string, any>): { errors: string[] } {
     if (!('chapters' in data)) {
       return { errors: ['JSON Structure: missing "chapters"'] }
     }
@@ -252,7 +252,7 @@ export abstract class Base implements MediaItem {
     }))
   }
 
-  addChapterAt (index: number, chapter: object = {}): number {
+  addChapterAt (index: number, chapter: Partial<Chapter> = {}): number {
     let startTime = 0
     if (index > this.chapters.length) {
       const start = this.chapters.at(-1) ? this.chapters.at(-1)!.startTime : 0
@@ -279,7 +279,7 @@ export abstract class Base implements MediaItem {
     return startTime
   }
 
-  addChapterAtTime (time: number | string, chapter: object = {}): boolean {
+  addChapterAtTime (time: number | string, chapter: Partial<Chapter> = {}): boolean {
     const startTime: number = toSeconds(time)
 
     if (this.chapterExistsAtStartTime(startTime)) {
