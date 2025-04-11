@@ -31,6 +31,11 @@ This is the core library of the [chaptertool](https://github.com/Mtillmann/chapt
 | AppleHLS              | Apple HLS Chapters           | applehls       | `json` | [spec](https://developer.apple.com/documentation/http-live-streaming/providing-javascript-object-notation-json-chapters), partial support                          |
 | Scenecut              | Scenecut format              | scenecut       | `json` | [source](https://github.com/slhck/scenecut-extractor#:~:text=cuts%20in%20JSON-,format,-%3A)                                                                        |
 | Audible               | Audible Chapter Format         | audible        | `json` | [source](./audible-chapter-spec.md)                                                                                                                               |
+| Spotify | Spotify Formats A/B | spotifya\|spotifyb | `txt` | [see](misc-text-chapter-spec.md) |
+| Podcastpage | Podcastpage Format | podcastpage | `txt` | [see](misc-text-chapter-spec.md) |
+| Podigee Text | Podigee Text Format | podigeetext | `txt` | [see](misc-text-chapter-spec.md) |
+| TransistorFM | TransistorFM Chapter Format | transistorfm | `txt` | [see](misc-text-chapter-spec.md) |
+| "Show Notes Chapters" | Unknown Shownotes Format | shownotes | `txt` | [see](misc-text-chapter-spec.md) |
 
 ## Installation
 
