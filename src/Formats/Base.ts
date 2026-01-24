@@ -223,9 +223,17 @@ export abstract class Base implements MediaItem {
               const geo = chapter.location?.geo?.trim()
               const osm = chapter.location?.osm?.trim()
               if(name || geo || osm) {
-                filtered.location = {
-                  name, geo, osm
+                const location:Record<string, string> = {}
+                if(name) {
+                  location.name = name
                 }
+                if(geo) {
+                  location.geo = geo
+                }
+                if(osm) {
+                  location.osm = osm
+                }
+                filtered.location = location
               }
             }
 

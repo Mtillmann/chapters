@@ -322,8 +322,8 @@ describe('ChaptersJson/Base Format Handler', () => {
         const output = instance.toString();
 
         expect(output).toContain('"location":{"name":"Test","geo":"00.0000,00.0000","osm":"https://osm.org"}');
-        expect(output).toContain('"location":{"name":"Existing","geo":"","osm":""}');
-        expect(output).toContain('"location":{"name":"","geo":"11.1111,11.1111","osm":""}');
+        expect(output).toContain('"location":{"name":"Existing"}');
+        expect(output).toContain('"location":{"geo":"11.1111,11.1111"}');
     });
 
 
