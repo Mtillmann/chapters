@@ -1,7 +1,7 @@
 import filenamify from 'filenamify'
 import { enforceMilliseconds, hash, secondsToTimestamp, toSeconds, Float } from '../util'
 import { type MediaItemMeta } from '../Types/MediaItemMeta'
-import { type Chapter } from '../Types/Chapter'
+import { ChapterLocation, type Chapter } from '../Types/Chapter'
 import { type MediaItem } from '../Types/MediaItem'
 
 export abstract class Base implements MediaItem {
@@ -98,6 +98,15 @@ export abstract class Base implements MediaItem {
       const endTime = this.endTime(index)
       const duration = endTime - this.chapters[index].startTime
       const timestampOptions = { hours: false }
+
+    const location : ChapterLocation = {
+      ...{
+        name: '',
+        geo: '',
+        osm: ''
+      }, ...('location' in chapter ? chapter.location : {}) 
+    }
+
       return {
         ...{
           id: hash(),
@@ -105,6 +114,7 @@ export abstract class Base implements MediaItem {
         },
         ...chapter,
         ...{
+          location,
           endTime,
           duration,
           startTime_hr: secondsToTimestamp(chapter.startTime, timestampOptions),
@@ -201,12 +211,23 @@ export abstract class Base implements MediaItem {
               filtered.toc = true
             }
 
-            ['location', 'img', 'url', 'title'].forEach((property: string) => {
+            ['img', 'url', 'title'].forEach((property: string) => {
               const key = property as keyof Chapter
               if (key in chapter && String(chapter[key]!).trim().length > 0) {
                 filtered[key] = chapter[key]
               }
             })
+
+            if('location' in chapter) {
+              const name = chapter.location?.name?.trim()
+              const geo = chapter.location?.geo?.trim()
+              const osm = chapter.location?.osm?.trim()
+              if(name || geo || osm) {
+                filtered.location = {
+                  name, geo, osm
+                }
+              }
+            }
 
             if ('img_filename' in chapter && 'img' in filtered && chapter.img_type === 'relative') {
               filtered.img = filenamify(chapter.img_filename!)

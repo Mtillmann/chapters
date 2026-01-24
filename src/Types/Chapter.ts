@@ -8,6 +8,12 @@ export interface Chapter {
   duration?: number
   title?: string
   url?: string
-  location?: string
+  location?: ChapterLocation
   toc?: boolean
+}
+
+export interface ChapterLocation {
+  name: string
+  geo: string
+  osm?: string
 }

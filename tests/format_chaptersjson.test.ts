@@ -262,4 +262,69 @@ describe('ChaptersJson/Base Format Handler', () => {
         expect(instance.toString(false, {imagePrefix}).includes(imagePrefix)).toBeTruthy();
     });
 
+    it('writes empty location on new chapter passed through addChapterAt', () => {
+        const instance = ChaptersJson.create(content);
+        instance.addChapterAt(4, {
+            startTime: 444,
+        });
+        expect(Object.keys(instance.chapters[4].location ?? {}).length).toBe(3);
+    });
+
+    it('writes empty location on new chapter passed through addChapterAtTime', () => {
+        const instance = ChaptersJson.create(content);
+        instance.addChapterAtTime(444);
+        expect(Object.keys(instance.chapters[4].location ?? {}).length).toBe(3);
+    });
+
+    it('writes empty location on new chapter passed through add', () => {
+        const instance = ChaptersJson.create(content);
+        instance.add({
+            startTime: 0,
+            endTime: 1,
+            title: 'new chapter'
+        });
+        expect(Object.keys(instance.chapters[0].location ?? {}).length).toBe(3);
+    });
+
+    it('writes empty location on all input chapters through bump', () => {
+        const instance = ChaptersJson.create(content);
+        expect(Object.keys(instance.chapters[10].location ?? {}).length).toBe(3);
+    });
+
+    it('keeps location on given chapter', () => {
+        const instance = ChaptersJson.create(content);
+        instance.addChapterAtTime(444, {
+            location: {
+                name: 'Test'
+                , geo: '00.0000,00.0000'
+                , osm: 'https://osm.org'
+            }
+        });
+        
+        expect(instance.chapters[4].location?.name).toBe('Test');
+        expect(instance.chapters[4].location?.geo).toBe('00.0000,00.0000');
+        expect(instance.chapters[4].location?.osm).toBe('https://osm.org');
+    });
+
+    it('exports location correctly', () => {
+        const instance = ChaptersJson.create(content);
+        instance.chapters[4].location = {
+            name: 'Test'
+            , geo: '00.0000,00.0000'
+            , osm: 'https://osm.org'
+        };
+
+        instance.chapters[9].location!.name = 'Existing';
+
+        instance.chapters[12].location!.geo = '11.1111,11.1111';
+
+        
+        const output = instance.toString();
+
+        expect(output).toContain('"location":{"name":"Test","geo":"00.0000,00.0000","osm":"https://osm.org"}');
+        expect(output).toContain('"location":{"name":"Existing","geo":"","osm":""}');
+        expect(output).toContain('"location":{"name":"","geo":"11.1111,11.1111","osm":""}');
+    });
+
+
 });
